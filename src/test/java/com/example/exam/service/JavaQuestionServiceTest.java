@@ -21,7 +21,9 @@ class JavaQuestionServiceTest {
     @Test
     void add_shouldAddQuestionAndReturnIt() {
         Question expected = new Question("Q1", "A1");
+
         Question actual = questionService.add("Q1", "A1");
+
         assertEquals(expected, actual);
         assertTrue(questionService.getAll().contains(expected));
     }
@@ -32,6 +34,7 @@ class JavaQuestionServiceTest {
         questionService.add(question);
 
         Question removed = questionService.remove(question);
+
         assertEquals(question, removed);
         assertFalse(questionService.getAll().contains(question));
     }
@@ -42,6 +45,7 @@ class JavaQuestionServiceTest {
         Question q2 = questionService.add("Q2", "A2");
 
         Collection<Question> all = questionService.getAll();
+
         assertEquals(2, all.size());
         assertTrue(all.contains(q1));
         assertTrue(all.contains(q2));
@@ -55,7 +59,9 @@ class JavaQuestionServiceTest {
     @Test
     void getRandomQuestion_shouldReturnAQuestionFromSet() {
         questionService.add("Q1", "A1");
+
         Question randomQuestion = questionService.getRandomQuestion();
+
         assertNotNull(randomQuestion);
         assertTrue(questionService.getAll().contains(randomQuestion));
     }
